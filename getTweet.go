@@ -291,7 +291,7 @@ func Handler(request Request) ([]Response, error) {
     table := db.Table("Tweet")
 
     var datas []Data
-    err := table.Get("search_word", word).All(&datas)
+    err := table.Get("search_word", word).Index("search_word_index").All(&datas)
     if err != nil {
         panic(err.Error())
     }
